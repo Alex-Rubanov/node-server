@@ -3,14 +3,18 @@ const app = express()
 const port = 3000
 
 const db = {
-    members : [
-        {name: 'alex', id: '2342fs', spec: 'front-end' },
-        {name: 'dave', id: 'ds25dw2', spec: 'back-end'},
-        {name: 'micke', id: '1fsa13', spec: 'dev-ops'}
+    members: [
+        {id: 1, name: 'alex', spec: 'front-end'},
+        {id: 2, name: 'dave', spec: 'back-end'},
+        {id: 3, name: 'micke', spec: 'dev-ops'}
     ],
-    location : {
+    location: {
         city: 'New York',
         language: 'english'
+    },
+    skills: {
+        experience: '+5years',
+        remote: true
     }
 }
 
@@ -28,6 +32,10 @@ app.get('/members/:name', (req, res) => {
     } else {
         res.send(foundMember);
     }
+})
+
+app.get('/skills', (req, res) => {
+    res.send(db.skills)
   })
 
 app.get('/location', (req, res) => {
